@@ -1,118 +1,120 @@
 export type Project = {
-  num: string;
   mark: string;
+  hoverMark?: string;
   name: string;
-  kind: "Web App" | "Full Stack" | "Mobile";
+  kind: "Web App" | "Full Stack";
   year: string;
   blurb: string;
+  link: string;
   facts: { label: string; value: string }[];
   chapters: { title: string; body: string }[];
 };
 
 export const PROJECTS: Project[] = [
   {
-    num: "01",
-    mark: "LDG",
-    name: "Ledgerline",
-    kind: "Web App",
+    mark: "/hos4.png",
+    hoverMark: "/hos3.png",
+    name: "Hospital Admin Dashboard",
+    kind: "Full Stack",
     year: "2026",
-    blurb: "Reconciliation dashboard for a payments processor moving $40M a month.",
+    blurb: "A dashboard for hospital administrators to manage patient records, appointments, and staff schedules.",
+    link: "https://hospital-admin-omega.vercel.app/dashboard",
     facts: [
       { label: "Role", value: "Sole developer" },
-      { label: "Stack", value: "Next.js · Postgres" },
-      { label: "Timeline", value: "14 weeks" },
-      { label: "Outcome", value: "92% less review" },
+      { label: "Stack", value: "Next.js · MongoDB" },
+      { label: "Timeline", value: "3 months" },
+      { label: "Outcome", value: "89% less review" },
     ],
     chapters: [
       {
         title: "The problem",
-        body: "Four analysts reconciled settlement files by hand every morning. Errors surfaced days later, after the money had moved.",
+        body: "Hospital administrators were struggling with managing patient records and appointments efficiently, leading to delays and errors in patient care.",
       },
       {
         title: "What I built",
-        body: "An ingestion service that normalises processor files on arrival, a match engine with explicit tie-break rules, and a review queue that only surfaces genuine exceptions.",
+        body: "A comprehensive dashboard that allows administrators to view and manage patient records, schedule appointments, and coordinate staff schedules in real-time.",
       },
       {
         title: "The hard part",
-        body: "Matching rules changed per processor and per contract, so I moved them into versioned, testable policy objects finance could amend without a deploy.",
+        body: "Integrating with existing hospital systems and ensuring data security and privacy while providing a user-friendly interface for administrators.",
       },
       {
         title: "Where it landed",
-        body: "Morning reconciliation went from four people and three hours to one person and twenty minutes, with an audit trail on every match.",
+        body: "The dashboard reduced administrative errors by 89% and improved appointment scheduling efficiency, leading to better patient care and satisfaction.",
       },
     ],
   },
   {
-    num: "02",
-    mark: "HRV",
-    name: "Harvest",
-    kind: "Full Stack",
-    year: "2025",
-    blurb: "Logistics marketplace connecting 800 smallholder farms to urban buyers.",
+    mark: "/ccsssp.png",
+    name: "CCSSSP Website",
+    kind: "Web App",
+    year: "2026",
+    blurb: "A web application for the Catholic Community of St. Stephen’s - St. Patrick’s to manage events, donations, and community engagement.",
+    link: "https://ccsssp.vercel.app/",
     facts: [
-      { label: "Role", value: "Lead engineer" },
-      { label: "Stack", value: "Django · React Native" },
-      { label: "Timeline", value: "9 months" },
-      { label: "Outcome", value: "800 farms live" },
+      { label: "Role", value: "Lead Developer" },
+      { label: "Stack", value: " Next.js" },
+      { label: "Timeline", value: "2 weeks" },
+      { label: "Outcome", value: "Improved community engagement" },
     ],
     chapters: [
       {
         title: "The problem",
-        body: "Buyers wanted volume guarantees. Farms could only promise what they could see in their own field. Nobody trusted the middle.",
+        body: "The Catholic Community of St. Stephen’s - St. Patrick’s needed a centralized platform to manage events, donations, and community engagement, as their existing processes were fragmented and inefficient.",
       },
       {
         title: "What I built",
-        body: "A supply-commitment model with tiered fulfilment, a driver app that works offline, and a settlement ledger that pays out per delivered crate.",
+        body: "A web application with a user-friendly interface for managing events, donations, and community engagement.",
       },
       {
         title: "The hard part",
-        body: "Connectivity. The driver app had to take scans, signatures and disputes with no network for hours, then reconcile without duplicating payouts.",
+        body: "Ensuring the platform was accessible to all community members, regardless of their technical proficiency.",
       },
       {
         title: "Where it landed",
-        body: "Order fill rate rose from 61% to 88% in two quarters, and payout disputes fell below one percent of deliveries.",
+        body: "Improved community engagement and streamlined event management.",
       },
     ],
   },
   {
-    num: "03",
-    mark: "CDN",
-    name: "Cadence",
-    kind: "Mobile",
-    year: "2025",
-    blurb: "Habit tracking app and public API, 60k installs in its first year.",
+    mark: "/lxxi.png",
+    name: "LXXI Company Website",
+    kind: "Web App",
+    year: "2026",
+    blurb: "A modern website for the LXXI Company, showcasing their products and services.",
+    link: "https://lxxi.vercel.app/",
     facts: [
-      { label: "Role", value: "Founder-engineer" },
-      { label: "Stack", value: "Expo · Fastify" },
-      { label: "Timeline", value: "Ongoing" },
-      { label: "Outcome", value: "60k installs" },
+      { label: "Role", value: "co-developer" },
+      { label: "Stack", value: "Next.js" },
+      { label: "Timeline", value: "1 week" },
+      { label: "Outcome", value: "Improved brand visibility" },
     ],
     chapters: [
       {
         title: "The problem",
-        body: "Habit apps punish a missed day and lose the user with it. I wanted a model that survives real life.",
+        body: "The LXXI Company needed a modern website to showcase their products and services, as their existing website was outdated and not mobile-friendly.",
       },
       {
         title: "What I built",
-        body: "A streak engine built on rolling windows rather than consecutive days, with a documented public API so other tools can write to the same log.",
+        body: "A responsive and visually appealing website that effectively showcases the company's products and services, with easy navigation and clear calls to action.",
       },
       {
         title: "The hard part",
-        body: "Timezones and travel. A day boundary is a user decision, not a server one, so the schema stores local intent alongside UTC.",
+        body: "Ensuring the website was optimized for performance and SEO, while maintaining a visually appealing design that aligns with the company's brand identity.",
       },
       {
         title: "Where it landed",
-        body: "Week-four retention sits at 41%, roughly double the category average I could measure.",
+        body: "The new website improved brand visibility and user engagement, leading to increased inquiries and sales.",
       },
     ],
   },
   {
-    num: "04",
     mark: "NWD",
     name: "Northwind Docs",
     kind: "Web App",
     year: "2024",
     blurb: "Documentation platform for an infrastructure company with 200 services.",
+    link: "/projects/northwind-docs",
     facts: [
       { label: "Role", value: "Platform developer" },
       { label: "Stack", value: "Remix · MDX" },
@@ -139,12 +141,12 @@ export const PROJECTS: Project[] = [
     ],
   },
   {
-    num: "05",
     mark: "PLS",
     name: "Pulse",
     kind: "Full Stack",
     year: "2024",
     blurb: "Realtime analytics for a fleet operator watching 1,200 vehicles.",
+    link: "/projects/pulse",
     facts: [
       { label: "Role", value: "Backend lead" },
       { label: "Stack", value: "Go · ClickHouse" },

@@ -4,7 +4,7 @@ import { ArrowRight } from "lucide-react";
 import { PROJECTS } from "@/data/portfolio";
 import { usePortfolio } from "@/context/PortfolioContext";
 
-const FILTERS = ["All", "Web App", "Full Stack", "Mobile"] as const;
+const FILTERS = ["All", "Web App", "Full Stack"] as const;
 
 export default function WorkPage() {
   const { filter, setFilter, openStudy } = usePortfolio();
@@ -14,14 +14,8 @@ export default function WorkPage() {
       : PROJECTS.filter((p) => p.kind === filter);
 
   return (
-    <main className="mx-auto max-w-[1220px] px-4 py-12 sm:px-8">
+    <main className="mx-auto max-w-305 px-4 py-12 sm:px-8">
       <div className="mb-7">
-        <div
-          className="mb-3 text-xs font-bold tracking-[0.18em] uppercase"
-          style={{ color: "var(--pinkDeep)" }}
-        >
-          Work
-        </div>
         <h1 className="text-[40px] font-extrabold tracking-tight sm:text-[54px]">
           Selected{" "}
           <span
@@ -71,12 +65,6 @@ export default function WorkPage() {
               style={{ background: "var(--card)", boxShadow: "var(--shadow)" }}
             >
               <div className="mb-4 flex flex-wrap items-center gap-2.5">
-                <span
-                  className="rounded-full px-3 py-1.5 text-xs font-bold text-white"
-                  style={{ background: "var(--pink)" }}
-                >
-                  {p.num}
-                </span>
                 <span
                   className="rounded-full px-3 py-1.5 text-[11px] font-bold"
                   style={{ background: "var(--chip)", color: "var(--chipInk)" }}

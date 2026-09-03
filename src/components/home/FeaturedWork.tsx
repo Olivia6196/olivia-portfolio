@@ -3,6 +3,7 @@
 import { ArrowRight, Sparkles } from "lucide-react";
 import { PROJECTS } from "@/data/portfolio";
 import { usePortfolio } from "@/context/PortfolioContext";
+import Image from "next/image";
 
 export default function FeaturedWork() {
   const { nav, openStudy } = usePortfolio();
@@ -10,7 +11,7 @@ export default function FeaturedWork() {
 
   return (
     <section className="pt-14">
-      <div className="mb-[22px] flex flex-wrap items-center justify-between gap-4">
+      <div className="mb-5.5 flex flex-wrap items-center justify-between gap-4">
         <div className="flex items-center gap-2.5">
           <h2 className="m-0 text-[15px] font-extrabold tracking-[0.16em] uppercase">
             Featured projects
@@ -27,33 +28,48 @@ export default function FeaturedWork() {
         </button>
       </div>
 
-      <div className="grid gap-[22px] md:grid-cols-3">
+      <div className="grid gap-5.5 md:grid-cols-3">
         {featured.map((p, i) => (
           <button
             key={p.name}
             onClick={() => openStudy(i)}
-            className="group flex flex-col overflow-hidden rounded-[26px] text-left transition-transform hover:-translate-y-1.5"
+            className="project-card group flex flex-col overflow-hidden rounded-[26px] text-left transition-transform hover:-translate-y-1.5"
             style={{ background: "var(--card)", boxShadow: "var(--shadow)" }}
           >
             <div
-              className="relative flex h-[176px] items-end p-[18px]"
+              className="relative flex h-44 items-end p-4.5"
               style={{
                 background:
                   "linear-gradient(150deg, var(--pinkSoft), var(--card2))",
               }}
             >
-              <span
-                className="text-[52px] font-extrabold tracking-[-0.04em] opacity-30"
-                style={{ color: "var(--pink)" }}
-              >
-                {p.mark}
-              </span>
-              <span
-                className="absolute top-4 left-4 rounded-full px-3 py-1 text-xs font-bold text-white"
-                style={{ background: "var(--pink)" }}
-              >
-                {p.num}
-              </span>
+              {p.mark.startsWith("/") ? (
+                <>
+                  <Image
+                    src={p.mark}
+                    alt={`${p.name} project preview`}
+                    fill
+                    sizes="(max-width: 768px) 100vw, 33vw"
+                    className="object-cover transition-opacity duration-500"
+                  />
+                  {p.hoverMark && (
+                    <Image
+                      src={p.hoverMark}
+                      alt={`${p.name} alternate preview`}
+                      fill
+                      sizes="(max-width: 768px) 100vw, 33vw"
+                      className="project-image-secondary z-10 object-cover opacity-0 transition-opacity duration-500"
+                    />
+                  )}
+                </>
+              ) : (
+                <span
+                  className="text-[52px] font-extrabold tracking-[-0.04em] opacity-30"
+                  style={{ color: "var(--pink)" }}
+                >
+                  {p.mark}
+                </span>
+              )}
             </div>
             <div className="flex flex-1 flex-col gap-2.5 p-5">
               <div className="flex items-center gap-2.5">

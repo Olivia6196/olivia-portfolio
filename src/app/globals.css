@@ -113,6 +113,11 @@ textarea::placeholder {
   animation: dividerPulse 2.8s ease-in-out infinite;
 }
 
+.project-card:hover .project-image-secondary,
+.project-card:focus-visible .project-image-secondary {
+  opacity: 1;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .animate-page,
   .animate-float,

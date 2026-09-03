@@ -25,13 +25,13 @@ export default function Header() {
 
   return (
     <header
-      className="border-b sticky top-0 z-40 border-b backdrop-blur-[14px]"
+      className="sticky top-0 z-40 border-b backdrop-blur-[14px]"
       style={{
         background: "color-mix(in srgb, var(--pinkTint) 78%, transparent)",
         borderColor: "var(--line)",
       }}
     >
-      <div className="mx-auto flex max-w-[1220px] items-center gap-7 px-4 py-3.5 sm:px-8">
+      <div className="mx-auto flex max-w-305 items-center gap-7 px-4 py-3.5 sm:px-8">
         <button
           onClick={() => nav("home")}
           className="mr-auto flex items-center gap-2"
@@ -77,7 +77,7 @@ export default function Header() {
           aria-label={
             theme === "dark" ? "Switch to light mode" : "Switch to dark mode"
           }
-          className="inline-flex h-10 w-10 items-center justify-center rounded-full border transition-transform hover:rotate-[-12deg] hover:scale-105"
+          className="inline-flex h-10 w-10 items-center justify-center rounded-full border transition-transform hover:-rotate-12 hover:scale-105"
           style={{
             borderColor: "var(--line)",
             background: "var(--card)",
