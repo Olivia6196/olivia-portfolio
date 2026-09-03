@@ -1,120 +1,175 @@
-"use client";
+import { useEffect, useRef, useState } from "react";
 
-import { useEffect, useState } from "react";
-import { TECH, PRO } from "@/data/portfolio";
+const technicalSkills = [
+  { name: "JavaScript", level: 92 },
+  { name: "Next.js", level: 65 },
+  { name: "Tailwind CSS", level: 90 },
+  { name: "React", level: 75 },
+  { name: "HTML & CSS", level: 99 },
+  { name: "Node.js", level: 65 },
+  { name: "Git & GitHub", level: 82 },
+  { name: "TypeScript", level: 80 },
+  { name: "Express.js", level: 70 },
+  { name: "MongoDB", level: 75 },
+];
 
-const CIRC = 2 * Math.PI * 44;
+const professionalSkills = [
+  { name: "Listening", level: 99 },
+  { name: "Communication", level: 80 },
+  { name: "Collaboration & Problem-Solving", level: 87 },
+  { name: "Adaptability", level: 70 },
+  { name: "Creativity & Time Management", level: 98 },
+  { name: "Learning", level: 95 },
+];
 
 export default function Skills() {
-  const [techC, setTechC] = useState(TECH.map(() => 0));
-  const [proC, setProC] = useState(PRO.map(() => 0));
+  const sectionRef = useRef(null);
+  const [visible, setVisible] = useState(false);
 
+  const [techCounters, setTechCounters] = useState(
+    technicalSkills.map(() => 0),
+  );
+  const [proCounters, setProCounters] = useState(
+    professionalSkills.map(() => 0),
+  );
+
+  const radius = 44;
+  const circumference = 2 * Math.PI * radius;
+
+  // Trigger animations on scroll
   useEffect(() => {
-    setTechC(TECH.map(() => 0));
-    setProC(PRO.map(() => 0));
-    const id = setInterval(() => {
-      setTechC((prev) =>
-        prev.map((v, i) => Math.min(v + 2, TECH[i].level))
-      );
-      setProC((prev) => prev.map((v, i) => Math.min(v + 2, PRO[i].level)));
-    }, 18);
-    const timeout = setTimeout(() => clearInterval(id), 3000);
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setVisible(true);
+          observer.unobserve(entry.target);
+        }
+      },
+      { threshold: 0.5 },
+    );
+
+    if (sectionRef.current) observer.observe(sectionRef.current);
+
     return () => {
-      clearInterval(id);
-      clearTimeout(timeout);
+      observer.disconnect();
     };
   }, []);
 
+  // Animate Technical Skills
+  useEffect(() => {
+    if (!visible) return;
+    const intervals = technicalSkills.map((skill, index) => {
+      return setInterval(() => {
+        setTechCounters((prev) => {
+          const newCounters = [...prev];
+          if (newCounters[index] < skill.level) newCounters[index] += 1;
+          return newCounters;
+        });
+      }, 15);
+    });
+    return () => intervals.forEach((i) => clearInterval(i));
+  }, [visible]);
+
+  // Animate Professional Skills
+  useEffect(() => {
+    if (!visible) return;
+    const intervals = professionalSkills.map((skill, index) => {
+      return setInterval(() => {
+        setProCounters((prev) => {
+          const newCounters = [...prev];
+          if (newCounters[index] < skill.level) newCounters[index] += 1;
+          return newCounters;
+        });
+      }, 15);
+    });
+    return () => intervals.forEach((i) => clearInterval(i));
+  }, [visible]);
+
   return (
-    <section className="mt-11">
-      <h2 className="mb-1.5 text-[30px] font-extrabold tracking-tight">
+    <section
+      ref={sectionRef}
+      className="pt-28 pb-7"
+    >
+      {/* Technical Skills */}
+      <h2 className="text-3xl font-semibold text-left mb-1">
         Technical Skills
       </h2>
       <div
-        className="mb-[26px] h-[3px] w-[70px] rounded-full"
+        className="animate-divider mb-8 h-0.75 w-11.5 rounded-full"
         style={{ background: "var(--pink)" }}
       />
-      <div className="grid gap-x-10 gap-y-[22px] sm:grid-cols-2">
-        {TECH.map((t, i) => (
-          <div key={t.name}>
-            <div className="mb-2 flex items-baseline justify-between">
-              <span className="text-sm font-semibold">{t.name}</span>
-              <span
-                className="text-[13px] font-bold"
-                style={{ color: "var(--pinkDeep)" }}
-              >
-                {techC[i]}%
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-24">
+        {technicalSkills.map((skill, index) => (
+          <div key={skill.name}>
+            <div className="flex justify-between mb-1">
+              <span className="dark:text-white text-black font-medium">
+                {skill.name}
+              </span>
+              <span className="dark:text-white text-black font-medium">
+                {techCounters[index]}%
               </span>
             </div>
-            <div
-              className="h-3 overflow-hidden rounded-full"
-              style={{ background: "var(--line)" }}
-            >
+            <div className="w-full h-4 bg-gray-300 rounded-full">
               <div
-                className="h-full rounded-full transition-[width] duration-75"
+                className="h-4 rounded-full"
                 style={{
-                  width: `${techC[i]}%`,
-                  background:
-                    "linear-gradient(90deg, var(--pink), var(--pinkDeep))",
+                  width: `${techCounters[index]}%`,
+                  background: "var(--pink)",
                 }}
-              />
+              ></div>
             </div>
           </div>
         ))}
       </div>
 
-      <h2 className="mt-11 mb-1.5 text-[30px] font-extrabold tracking-tight">
+      {/* Professional Skills */}
+      <h2 className="text-3xl font-semibold text-left mb-1 ">
         Professional Skills
       </h2>
       <div
-        className="mb-[26px] h-[3px] w-[70px] rounded-full"
+        className="animate-divider mb-8 h-0.75 w-11.5 rounded-full"
         style={{ background: "var(--pink)" }}
       />
-      <div className="grid grid-cols-2 gap-[26px] sm:grid-cols-3">
-        {PRO.map((p, i) => {
-          const offset = CIRC * (1 - proC[i] / 100);
-          return (
-            <div
-              key={p.name}
-              className="flex flex-col items-center gap-3 rounded-[24px] p-6"
-              style={{ background: "var(--card)", boxShadow: "var(--shadow)" }}
-            >
-              <div className="relative h-[108px] w-[108px]">
-                <svg
-                  viewBox="0 0 100 100"
-                  className="h-full w-full -rotate-90"
-                >
-                  <circle
-                    cx="50"
-                    cy="50"
-                    r="44"
-                    fill="transparent"
-                    stroke="var(--line)"
-                    strokeWidth="8"
-                  />
-                  <circle
-                    cx="50"
-                    cy="50"
-                    r="44"
-                    fill="transparent"
-                    stroke="var(--pink)"
-                    strokeWidth="8"
-                    strokeLinecap="round"
-                    strokeDasharray={CIRC}
-                    strokeDashoffset={offset}
-                    className="transition-[stroke-dashoffset] duration-75"
-                  />
-                </svg>
-                <span className="absolute inset-0 flex items-center justify-center text-[19px] font-extrabold">
-                  {proC[i]}%
-                </span>
-              </div>
-              <p className="m-0 text-center text-[13px] leading-snug font-semibold">
-                {p.name}
-              </p>
+      <div className="grid grid-cols-2 md:grid-cols-3 gap-8">
+        {professionalSkills.map((skill, index) => (
+          <div key={skill.name} className="flex flex-col items-center">
+            <div className="relative w-24 h-24">
+              <svg
+                className="transform -rotate-90 w-full h-full"
+                viewBox="0 0 100 100"
+              >
+                {/* Background circle */}
+                <circle
+                  cx={50}
+                  cy={50}
+                  r={radius}
+                  strokeWidth="8"
+                  stroke="#e5e7eb" // Tailwind gray-300
+                  fill="transparent"
+                />
+                {/* Foreground circle */}
+                <circle
+                  cx={50}
+                  cy={50}
+                  r={radius}
+                  strokeWidth="8"
+                  stroke="var(--pink)"
+                  fill="transparent"
+                  strokeDasharray={circumference}
+                  strokeDashoffset={
+                    circumference * (1 - proCounters[index] / 100)
+                  }
+                  strokeLinecap="round"
+                />
+              </svg>
+              {/* Animated number */}
+              <span className="absolute inset-0 flex items-center justify-center text-lg font-semibold text-black dark:text-white">
+                {proCounters[index]}%
+              </span>
             </div>
-          );
-        })}
+            <p className="text-center mt-2 text-sm font-medium">{skill.name}</p>
+          </div>
+        ))}
       </div>
     </section>
   );

@@ -8,7 +8,7 @@ import HomeCTA from "./HomeCTA";
 
 export default function HomePage() {
   return (
-    <main className="mx-auto max-w-[1220px] px-4 pb-[72px] sm:px-8">
+    <main className="mx-auto max-w-305 px-4 pb-18 sm:px-8">
       <Hero />
       <AboutPreview />
       <FeaturedWork />

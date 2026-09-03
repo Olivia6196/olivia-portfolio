@@ -32,7 +32,7 @@ export default function AboutPreview() {
 
   return (
     <section
-      className="mt-6 rounded-[30px] p-[34px]"
+      className="mt-6 rounded-[30px] p-8.5"
       style={{ background: "var(--card)", boxShadow: "var(--shadow)" }}
     >
       <div className="grid items-start gap-8 md:grid-cols-[300px_1fr_1fr]">
@@ -45,7 +45,9 @@ export default function AboutPreview() {
             alt="Olivia at work"
             width={300}
             height={400}
-            className="aspect-[3/4] w-full object-cover object-[50%_18%]"
+            sizes="(max-width: 768px) 100vw, 300px"
+            loading="lazy"
+            className="aspect-3/4 w-full object-cover object-[50%_18%]"
           />
         </figure>
 
@@ -77,11 +79,11 @@ export default function AboutPreview() {
               }}
             >
               impactful
-            </span>{" "}
-            digital realities.
+            </span>{"  "}
+             digital realities.
           </h2>
           <div
-            className="mb-4 h-[3px] w-[60px] rounded-full"
+            className="animate-divider mb-4 h-0.75 w-25 rounded-full"
             style={{ background: "var(--pink)" }}
           />
           <p
@@ -93,7 +95,7 @@ export default function AboutPreview() {
           </p>
           <button
             onClick={() => nav("about")}
-            className="inline-flex items-center gap-2 rounded-full px-[22px] py-3 text-sm font-semibold text-white"
+            className="inline-flex items-center gap-2 rounded-full px-5.5 py-3 text-sm font-semibold text-white"
             style={{
               background: "var(--pink)",
               boxShadow: "0 10px 24px rgba(236,72,153,.3)",

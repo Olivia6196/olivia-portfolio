@@ -3,30 +3,32 @@
 import Image from "next/image";
 import {
   ArrowRight,
-  Dribbble,
-  Github,
   Heart,
-  Linkedin,
+  Linkedin, 
+  Github, 
+  Instagram, 
+  Facebook,
   Sparkles,
 } from "lucide-react";
 import { usePortfolio } from "@/context/PortfolioContext";
 
-function XIcon({ size = 17 }: { size?: number }) {
-  return (
-    <svg
-      width={size}
-      height={size}
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <path d="M21 5.5a7.6 7.6 0 0 1-2.3.7A3.7 3.7 0 0 0 20.4 4a7.6 7.6 0 0 1-2.5 1A3.7 3.7 0 0 0 11.5 8a10 10 0 0 1-7.3-3.7 3.7 3.7 0 0 0 1.1 5 3.6 3.6 0 0 1-1.7-.5 3.7 3.7 0 0 0 3 3.6 3.7 3.7 0 0 1-1.7.1 3.7 3.7 0 0 0 3.4 2.6A10 10 0 0 1 3 17.5 14 14 0 0 0 21 5.5Z" />
-    </svg>
-  );
-}
+const socials = [
+            { icon: Linkedin,
+    link: "https://www.linkedin.com/in/olivia-ifebuchechukwu-omeje-36011b355?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app", 
+    style:" py-1 px-2 rounded-xl bg-[#0a66c2] text-white text-4xl mr-1" 
+},
+            { icon: Github,
+    link: "https://github.com/Olivia6196",
+    style: " text-white text-4xl bg-[#171515] py-1 px-2 rounded-xl border border-white mr-1"},
+  
+  { icon: Instagram,   
+    link: "https://www.instagram.com/olivia_codes", 
+    style: " text-white text-[2.45rem] md:text-4xl bg-gradient-to-tr from-yellow-300 via-red-400 to-purple-400 pt-[1.6vw] md:pt-[0.4vw] pb-1 px-2 rounded-xl mr-1" 
+},
+  { icon:   Facebook, 
+    link: "https://www.facebook.com/abel.olivi.5", 
+    style: " text-4xl text-white bg-blue-500 py-[1.5vw] md:py-[0.4vw] px-2 rounded-lg" }
+  ]
 
 export default function Hero() {
   const { nav } = usePortfolio();
@@ -96,24 +98,20 @@ export default function Hero() {
           </button>
         </div>
         <div className="flex gap-3">
-          {[
-            { Icon: Github, label: "GitHub" },
-            { Icon: Linkedin, label: "LinkedIn" },
-          ].map(({ Icon, label }) => (
+           {socials.map(({ icon: Icon, link, style }) => {
+            return(
             <a
-              key={label}
-              href="#"
-              aria-label={label}
-              title={label}
-              className="inline-flex h-10 w-10 items-center justify-center rounded-full transition-all hover:-translate-y-0.5"
-              style={{
-                background: "var(--pinkSoft)",
-                color: "var(--pinkDeep)",
-              }}
+              key={link}
+              href={link}
+              aria-label={link}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={style}
+              
             >
-              <Icon size={17} />
+              <Icon size={20} />
             </a>
-          ))}
+            )})}
         </div>
       </div>
 
@@ -137,7 +135,9 @@ export default function Hero() {
             alt="Omeje Olivia"
             width={560}
             height={700}
-            className="aspect-4/5 w-full object-cover object-[50%_22%]"
+            sizes="(max-width: 768px) 100vw, 560px"
+            className="aspect-4/5 w-full object-cover object-[50%_22%] hover:scale-95 transition-transform duration-300 rounded-2xl"
+            loading="eager"
             priority
           />
         </figure>

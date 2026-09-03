@@ -25,7 +25,7 @@ export default function Header() {
 
   return (
     <header
-      className="sticky top-0 z-40 border-b backdrop-blur-[14px]"
+      className="border-b sticky top-0 z-40 border-b backdrop-blur-[14px]"
       style={{
         background: "color-mix(in srgb, var(--pinkTint) 78%, transparent)",
         borderColor: "var(--line)",
@@ -42,8 +42,10 @@ export default function Header() {
             alt="Livia Codes"
             width={140}
             height={48}
+            sizes="140px"
             className="h-12 w-auto object-contain"
             style={{
+              width: "auto",
               background: "var(--logoChip)",
               padding: "var(--logoPad)",
               borderRadius: 14,

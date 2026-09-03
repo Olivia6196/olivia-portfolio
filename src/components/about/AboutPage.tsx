@@ -24,9 +24,9 @@ const CARDS = [
 
 export default function AboutPage() {
   return (
-    <main className="mx-auto max-w-[1220px] px-4 py-12 sm:px-8">
+    <main className="mx-auto max-w-305 px-4 py-12 sm:px-8">
       <div className="grid items-start gap-11 md:grid-cols-[380px_1fr]">
-        <div className="relative flex min-h-[460px] items-end justify-center">
+        <div className="relative flex min-h-115 items-end justify-center">
           <div
             className="absolute inset-[6%_4%_0_4%] rounded-[999px_999px_40px_40px]"
             style={{
@@ -46,8 +46,11 @@ export default function AboutPage() {
             alt="Omeje Olivia"
             width={380}
             height={480}
-            className="animate-float relative block w-full max-w-[380px]"
+            sizes="(max-width: 768px) 86vw, 380px"
+            loading="lazy"
+            className="animate-float relative block w-full max-w-95"
             style={{
+              height: "auto",
               filter: "drop-shadow(0 22px 40px rgba(236,72,153,.28))",
             }}
           />
@@ -68,7 +71,7 @@ export default function AboutPage() {
               About Me
             </h1>
             <div
-              className="mb-[18px] h-[3px] w-[70px] rounded-full"
+              className="animate-divider mb-4.5 h-0.75 w-17.5 rounded-full"
               style={{ background: "var(--pink)" }}
             />
             <p className="m-0 text-base leading-[1.75]" style={{ color: "var(--ink)" }}>
@@ -97,7 +100,7 @@ export default function AboutPage() {
               My Journey
             </h2>
             <div
-              className="mb-[18px] h-[3px] w-[70px] rounded-full"
+              className="animate-divider mb-4.5 h-0.75 w-17.5 rounded-full"
               style={{ background: "var(--pink)" }}
             />
             <p
@@ -120,7 +123,7 @@ export default function AboutPage() {
         </div>
       </div>
 
-      <div className="mt-7 grid gap-[22px] md:grid-cols-2">
+      <div className="mt-7 grid gap-5.5 md:grid-cols-2">
         {CARDS.map((c) => (
           <div
             key={c.title}
@@ -131,7 +134,7 @@ export default function AboutPage() {
               {c.title}
             </h2>
             <div
-              className="mb-3.5 h-[3px] w-[46px] rounded-full"
+              className="animate-divider mb-3.5 h-0.75 w-11.5 rounded-full"
               style={{ background: "var(--pink)" }}
             />
             <p
@@ -163,7 +166,7 @@ export default function AboutPage() {
           Bachelor of Science (B.Sc.) — Anatomy.
         </p>
         <p
-          className="m-0 max-w-[78ch] text-[15px] leading-[1.75]"
+          className="m-0 text-[15px] leading-[1.75]"
           style={{ color: "var(--muted)" }}
         >
           My academic training helped me develop strong analytical thinking,

@@ -14,7 +14,7 @@ export default function Footer() {
       }}
     >
       <div
-        className="mx-auto flex max-w-[1220px] flex-wrap items-center gap-5 px-4 py-5 text-[13px] sm:px-8"
+        className="mx-auto flex max-w-305 flex-wrap items-center gap-5 px-4 py-5 text-[13px] sm:px-8"
         style={{ color: "var(--muted)" }}
       >
         <span className="mr-auto">
@@ -26,7 +26,7 @@ export default function Footer() {
         <button onClick={() => nav("services")} className="hover:opacity-80">
           Services
         </button>
-        <a href="mailto:hello@omejeolivia.dev" className="hover:opacity-80">
+        <a href="mailto:oliviaifebuche002@gmail.com" className="hover:opacity-80">
           Email
         </a>
       </div>

@@ -3,7 +3,9 @@
 import { useState } from "react";
 import {
   ArrowRight,
+  Facebook,
   Github,
+  Instagram,
   Linkedin,
   Mail,
   MapPin,
@@ -14,10 +16,34 @@ type FormState = {
   name: string;
   email: string;
   message: string;
-  budget: string;
 };
 
-const BUDGETS = ["Under 10k", "10–25k", "25k+"];
+const socials = [
+  {
+    icon: Linkedin,
+    link: "https://www.linkedin.com/in/olivia-ifebuchechukwu-omeje-36011b355?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+    style: " py-1 px-2 rounded-xl bg-[#0a66c2] text-white text-4xl mr-1",
+  },
+  {
+    icon: Github,
+    link: "https://github.com/Olivia6196",
+    style:
+      " text-white text-4xl bg-[#171515] py-1 px-2 rounded-xl border border-white mr-1",
+  },
+
+  {
+    icon: Instagram,
+    link: "https://www.instagram.com/olivia_codes",
+    style:
+      " text-white text-[2.45rem] md:text-4xl bg-gradient-to-tr from-yellow-300 via-red-400 to-purple-400 pt-[1.6vw] md:pt-[0.4vw] pb-1 px-2 rounded-xl mr-1",
+  },
+  {
+    icon: Facebook,
+    link: "https://www.facebook.com/abel.olivi.5",
+    style:
+      " text-4xl text-white bg-blue-500 py-[1.5vw] md:py-[0.4vw] px-2 rounded-lg",
+  },
+];
 
 function validate(f: FormState) {
   const e: Record<string, string> = {};
@@ -35,7 +61,6 @@ export default function ContactPage() {
     name: "",
     email: "",
     message: "",
-    budget: "10–25k",
   });
   const [err, setErr] = useState<Record<string, string>>({});
   const [sent, setSent] = useState(false);
@@ -56,7 +81,7 @@ export default function ContactPage() {
   };
 
   return (
-    <main className="mx-auto max-w-[1220px] px-4 py-12 sm:px-8">
+    <main className="mx-auto max-w-305 px-4 py-12 sm:px-8">
       <div className="mb-7">
         <div
           className="mb-3 text-xs font-bold tracking-[0.18em] uppercase"
@@ -83,13 +108,13 @@ export default function ContactPage() {
         <form
           onSubmit={submit}
           noValidate
-          className="flex flex-col gap-[18px] rounded-[28px] p-[30px]"
+          className="flex flex-col gap-4.5 rounded-[28px] p-7.5"
           style={{ background: "var(--card)", boxShadow: "var(--shadow)" }}
         >
           <div>
             <label
               htmlFor="cf-name"
-              className="mb-1.5 block text-xs font-bold tracking-[0.1em] uppercase"
+              className="mb-1.5 block text-xs font-bold tracking-widest uppercase"
               style={{ color: "var(--muted)" }}
             >
               Name
@@ -119,7 +144,7 @@ export default function ContactPage() {
           <div>
             <label
               htmlFor="cf-email"
-              className="mb-1.5 block text-xs font-bold tracking-[0.1em] uppercase"
+              className="mb-1.5 block text-xs font-bold tracking-widest uppercase"
               style={{ color: "var(--muted)" }}
             >
               Email
@@ -147,38 +172,9 @@ export default function ContactPage() {
           </div>
 
           <div>
-            <div
-              className="mb-2.5 text-xs font-bold tracking-[0.1em] uppercase"
-              style={{ color: "var(--muted)" }}
-            >
-              Budget
-            </div>
-            <div className="flex flex-wrap gap-2.5">
-              {BUDGETS.map((b) => {
-                const active = form.budget === b;
-                return (
-                  <button
-                    key={b}
-                    type="button"
-                    onClick={() => setForm((f) => ({ ...f, budget: b }))}
-                    className="cursor-pointer rounded-full border-[1.5px] px-[18px] py-2.5 text-[13px] font-bold"
-                    style={{
-                      background: active ? "var(--pink)" : "var(--card2)",
-                      color: active ? "#fff" : "var(--ink)",
-                      borderColor: active ? "var(--pink)" : "var(--line)",
-                    }}
-                  >
-                    {b}
-                  </button>
-                );
-              })}
-            </div>
-          </div>
-
-          <div>
             <label
               htmlFor="cf-msg"
-              className="mb-1.5 block text-xs font-bold tracking-[0.1em] uppercase"
+              className="mb-1.5 block text-xs font-bold tracking-widest uppercase"
               style={{ color: "var(--muted)" }}
             >
               Project
@@ -188,7 +184,7 @@ export default function ContactPage() {
               value={form.message}
               onChange={setField("message")}
               placeholder="What are you building, and what's in the way?"
-              className="min-h-[130px] w-full resize-y rounded-2xl border-[1.5px] px-4 py-3.5 text-[15px] outline-none"
+              className="min-h-32.5 w-full resize-y rounded-2xl border-[1.5px] px-4 py-3.5 text-[15px] outline-none"
               style={{
                 color: "var(--ink)",
                 background: "var(--card2)",
@@ -233,8 +229,8 @@ export default function ContactPage() {
           style={{ background: "var(--card)", boxShadow: "var(--shadow)" }}
         >
           {[
-            { Icon: Mail, label: "Email", value: "hello@omejeolivia.dev" },
-            { Icon: MapPin, label: "Based in", value: "Lagos / Remote" },
+            { Icon: Mail, label: "Email", value: "oliviaifebuche002@gmail.com" },
+            { Icon: MapPin, label: "Based in", value: "Enugu / Remote" },
             {
               Icon: User,
               label: "Available for",
@@ -264,29 +260,30 @@ export default function ContactPage() {
           ))}
 
           <div
-            className="border-t pt-[18px]"
+            className="border-t pt-4.5"
             style={{ borderColor: "var(--line)" }}
           >
             <div
-              className="mb-2.5 text-[11px] font-bold tracking-[0.12em] uppercase"
+              className="mb-2.5 text-[11px] font-bold tracking-widest uppercase"
               style={{ color: "var(--muted)" }}
             >
               Elsewhere
             </div>
             <div className="flex gap-2.5">
-              {[Github, Linkedin].map((Icon, i) => (
-                <a
-                  key={i}
-                  href="#"
-                  className="inline-flex h-[38px] w-[38px] items-center justify-center rounded-full transition-all hover:-translate-y-0.5"
-                  style={{
-                    background: "var(--pinkSoft)",
-                    color: "var(--pinkDeep)",
-                  }}
-                >
-                  <Icon size={17} />
-                </a>
-              ))}
+              {socials.map(({ icon: Icon, link, style }) => {
+                return (
+                  <a
+                    key={link}
+                    href={link}
+                    aria-label={link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={style}
+                  >
+                    <Icon size={17} />
+                  </a>
+                );
+              })}
             </div>
           </div>
         </aside>
