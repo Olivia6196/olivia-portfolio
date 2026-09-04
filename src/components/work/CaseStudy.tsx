@@ -64,7 +64,7 @@ export default function CaseStudy() {
       </div>
 
       <div
-        className="relative h-140 items-end p-4.5 mb-10 rounded-2xl"
+        className="relative w-full h-[55vw] md:h-140 p-4.5 mb-10 rounded-2xl"
         style={{
           background: "linear-gradient(150deg, var(--pinkSoft), var(--card2))",
         }}
@@ -82,7 +82,8 @@ export default function CaseStudy() {
               <Image
                 src={study.hoverMark}
                 alt={`${study.name} alternate preview`}
-                fill
+                width={545}
+                height={600}
                 sizes="(max-width: 768px) 100vw, 33vw"
                 className="project-image-secondary z-10 object-cover opacity-0 transition-opacity duration-500"
               />

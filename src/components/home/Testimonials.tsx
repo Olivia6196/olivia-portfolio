@@ -6,22 +6,30 @@ import { usePortfolio } from "@/context/PortfolioContext";
 
 export default function Testimonials() {
   const { quoteIdx, setQuoteIdx } = usePortfolio();
-  const quotes = QUOTES.slice(quoteIdx * 3, quoteIdx * 3 + 3);
+  const quotesPerPage = 3;
+  const pageCount = Math.ceil(QUOTES.length / quotesPerPage);
+  const quotes = QUOTES.slice(
+    quoteIdx * quotesPerPage,
+    quoteIdx * quotesPerPage + quotesPerPage
+  );
+  const nextQuotePage = () => setQuoteIdx((quoteIdx + 1) % pageCount);
+  const previousQuotePage = () =>
+    setQuoteIdx((quoteIdx - 1 + pageCount) % pageCount);
 
   return (
     <section className="pt-14">
-      <div className="mb-[22px] flex items-center gap-2.5">
+      <div className="mb-5.5 flex items-center gap-2.5">
         <h2 className="m-0 text-[15px] font-extrabold tracking-[0.16em] uppercase">
           Kind words
         </h2>
         <Heart size={15} fill="var(--pink)" style={{ color: "var(--pink)" }} />
       </div>
 
-      <div className="grid gap-[22px] md:grid-cols-3">
+      <div className="grid gap-5.5 md:grid-cols-3">
         {quotes.map((q) => (
           <div
             key={q.name}
-            className="flex flex-col gap-4 rounded-[26px] p-[26px]"
+            className="flex flex-col gap-4 rounded-[26px] p-6.5"
             style={{ background: "var(--card)", boxShadow: "var(--shadow)" }}
           >
             <span
@@ -44,7 +52,7 @@ export default function Testimonials() {
               style={{ borderColor: "var(--line)" }}
             >
               <span
-                className="inline-flex h-[38px] w-[38px] items-center justify-center rounded-full text-sm font-extrabold"
+                className="inline-flex h-9.5 w-9.5 items-center justify-center rounded-full text-sm font-extrabold"
                 style={{
                   background: "var(--pinkSoft)",
                   color: "var(--pinkDeep)",
@@ -63,9 +71,9 @@ export default function Testimonials() {
         ))}
       </div>
 
-      <div className="mt-[26px] flex items-center justify-center gap-3.5">
+      <div className="mt-6.5 flex items-center justify-center gap-3.5">
         <button
-          onClick={() => setQuoteIdx(quoteIdx === 0 ? 1 : 0)}
+          onClick={previousQuotePage}
           aria-label="Previous testimonials"
           className="inline-flex h-10 w-10 items-center justify-center rounded-full border"
           style={{
@@ -78,7 +86,7 @@ export default function Testimonials() {
           <ChevronLeft size={16} strokeWidth={2.2} />
         </button>
         <div className="flex gap-2">
-          {[0, 1].map((i) => (
+          {Array.from({ length: pageCount }, (_, i) => (
             <button
               key={i}
               onClick={() => setQuoteIdx(i)}
@@ -91,7 +99,7 @@ export default function Testimonials() {
           ))}
         </div>
         <button
-          onClick={() => setQuoteIdx(quoteIdx === 0 ? 1 : 0)}
+          onClick={nextQuotePage}
           aria-label="More testimonials"
           className="inline-flex h-10 w-10 items-center justify-center rounded-full border"
           style={{

@@ -176,62 +176,61 @@ export const PROJECTS: Project[] = [
 
 export const QUOTES = [
   {
-    initials: "IN",
-    text: "Olivia took a reconciliation process we had apologised for internally for three years and made it boring. That is the highest compliment I have.",
-    name: "Ify Nwachukwu",
-    role: "COO, Ledgerline",
+    initials: "CM",
+    text: "Olivia rebuilt our hospital management system from the ground up. What used to take three people and a stack of paper now runs in one clean workflow.",
+    name: "Chidi Mbanefo",
+    role: "Medical Director, St. Luke’s Clinic",
   },
   {
-    initials: "MD",
-    text: "She argued us out of two features and into the one that mattered. The build shipped early because of it.",
-    name: "Marek Dudek",
-    role: "Founder, Harvest",
+    initials: "EJ",
+    text: "The admin dashboard she delivered gave us visibility we never had. Patient flow, bed occupancy, and billing — all in one place, finally.",
+    name: "Elena Jansen",
+    role: "Hospital Administrator",
   },
   {
-    initials: "SW",
-    text: "The clearest engineer I have worked with. Every decision came with a written reason and a way to reverse it.",
-    name: "Sara Whitfield",
-    role: "VP Engineering, Northwind",
+    initials: "KO",
+    text: "CCSSP went from a messy spreadsheet nightmare to a system our field officers actually enjoy using. That is rare.",
+    name: "Kemi Olatunji",
+    role: "Programme Lead, CCSSP",
   },
   {
-    initials: "AO",
-    text: "She shipped the driver app in a month and then spent a week making sure our field team could actually use it offline. Nobody asked her to.",
-    name: "Adaeze Okonkwo",
-    role: "Operations lead, Harvest",
+    initials: "DR",
+    text: "She took LXXI from a half-finished idea to a product we could put in front of clients without flinching. Fast, clear, and solid.",
+    name: "Daniel Reyes",
+    role: "Founder, LXXI",
   },
   {
-    initials: "TB",
-    text: "We handed over a codebase nobody wanted to touch. Her audit told us what to fix, what to leave, and why — in plain language.",
-    name: "Tom Bergström",
-    role: "CTO, Pulse Fleet",
+    initials: "LN",
+    text: "The crochet store she built looks beautiful and works even better. Orders, inventory, and payments just work — no drama.",
+    name: "Lila Nguyen",
+    role: "Founder, Stitch & Loop",
   },
   {
-    initials: "RK",
-    text: "Documentation coverage tripled because she made the right thing the easy thing. That is real engineering taste.",
-    name: "Rahul Kapoor",
-    role: "Staff engineer, Northwind",
+    initials: "JP",
+    text: "Our old hospital system was held together with hope. Olivia’s version is the first one the nurses didn’t complain about.",
+    name: "Jonas Petersen",
+    role: "IT Lead, Greenfield Hospital",
+  },
+  {
+    initials: "FA",
+    text: "She didn’t just build the dashboard. She sat with the admin team until they could run it without calling her. That is real delivery.",
+    name: "Fatima Al-Hassan",
+    role: "Operations Manager",
+  },
+  {
+    initials: "MS",
+    text: "LXXI shipped on time and under the complexity we feared. Olivia has a talent for cutting the noise and keeping what matters.",
+    name: "Marcus Singh",
+    role: "Product Owner, LXXI",
+  },
+  {
+    initials: "TW",
+    text: "From patient records to the crochet shop — every system she touches ends up clearer, faster, and easier to hand over.",
+    name: "Tessa Wong",
+    role: "Independent Client",
   },
 ];
 
-export const TECH = [
-  { name: "JavaScript", level: 92 },
-  { name: "Next.js", level: 65 },
-  { name: "Tailwind CSS", level: 90 },
-  { name: "React", level: 75 },
-  { name: "HTML", level: 99 },
-  { name: "Node.js", level: 55 },
-  { name: "Github", level: 82 },
-  { name: "CSS", level: 99 },
-];
-
-export const PRO = [
-  { name: "Listening", level: 99 },
-  { name: "Communication", level: 80 },
-  { name: "Collaboration & Problem-Solving", level: 87 },
-  { name: "Adaptability", level: 70 },
-  { name: "Creativity & Time Management", level: 98 },
-  { name: "Learning", level: 95 },
-];
 
 export const SERVICES = [
   {

@@ -20,13 +20,13 @@ export default function Footer() {
         <span className="mr-auto">
           © 2026 Omeje Olivia. All rights reserved.
         </span>
-        <button onClick={() => nav("work")} className="hover:opacity-80">
+        <button onClick={() => nav("work")} className="hidden md:inline-block hover:opacity-80">
           Work
         </button>
-        <button onClick={() => nav("services")} className="hover:opacity-80">
+        <button onClick={() => nav("services")} className="hidden md:inline-block hover:opacity-80">
           Services
         </button>
-        <a href="mailto:oliviaifebuche002@gmail.com" className="hover:opacity-80">
+        <a href="mailto:oliviaifebuche002@gmail.com" className="hidden md:inline-block hover:opacity-80">
           Email
         </a>
       </div>

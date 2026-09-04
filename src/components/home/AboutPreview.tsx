@@ -37,7 +37,7 @@ export default function AboutPreview() {
     >
       <div className="grid items-start gap-8 md:grid-cols-[300px_1fr_1fr]">
         <figure
-          className="m-0 overflow-hidden rounded-[200px_200px_26px_26px]"
+          className="hidden md:block m-0 overflow-hidden rounded-[200px_200px_26px_26px]"
           style={{ background: "var(--card2)" }}
         >
           <Image
@@ -80,7 +80,7 @@ export default function AboutPreview() {
             >
               impactful
             </span>{"  "}
-             digital realities.
+             realities.
           </h2>
           <div
             className="animate-divider mb-4 h-0.75 w-25 rounded-full"
@@ -90,8 +90,7 @@ export default function AboutPreview() {
             className="mb-5 max-w-[40ch] text-[15px] leading-relaxed"
             style={{ color: "var(--muted)" }}
           >
-            I blend engineering with design sense to build products that are not
-            only reliable in production but genuinely pleasant to use.
+            I combine technical depth with design sense to build websites that are technically solid and genuinely pleasant to use.
           </p>
           <button
             onClick={() => nav("about")}
@@ -106,7 +105,7 @@ export default function AboutPreview() {
         </div>
 
         <div
-          className="grid grid-cols-2 overflow-hidden rounded-[22px]"
+          className="grid grid-cols-1 md:grid-cols-2 overflow-hidden rounded-[22px]"
           style={{ gap: 1, background: "var(--line)" }}
         >
           {TILES.map(({ title, body, Icon }) => (

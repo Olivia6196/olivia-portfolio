@@ -8,7 +8,7 @@ export default function HomeCTA() {
 
   return (
     <section
-      className="mt-8 rounded-[30px] px-[34px] py-10"
+      className="mt-8 rounded-[30px] px-8.5 py-10"
       style={{
         background: "linear-gradient(120deg, var(--pinkSoft), var(--card))",
       }}
@@ -32,7 +32,7 @@ export default function HomeCTA() {
             className="mb-6 max-w-[40ch] text-[15px]"
             style={{ color: "var(--muted)" }}
           >
-            Two build slots open this quarter. Bring the hard problem.
+            Few build slots open this quarter. Bring the hard problem.
           </p>
           <button
             onClick={() => nav("contact")}
@@ -52,9 +52,9 @@ export default function HomeCTA() {
             {
               Icon: Mail,
               label: "Email",
-              value: "hello@omejeolivia.dev",
+              value: "oliviaifebuche002@gmail.com",
             },
-            { Icon: MapPin, label: "Based in", value: "Lagos / Remote" },
+            { Icon: MapPin, label: "Based in", value: "Enugu / Remote" },
             {
               Icon: User,
               label: "Available for",

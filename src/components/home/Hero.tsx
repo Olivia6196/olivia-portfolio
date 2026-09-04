@@ -9,8 +9,10 @@ import {
   Instagram, 
   Facebook,
   Sparkles,
+  Download,
 } from "lucide-react";
 import { usePortfolio } from "@/context/PortfolioContext";
+import Link from "next/link";
 
 const socials = [
             { icon: Linkedin,
@@ -44,9 +46,9 @@ export default function Hero() {
           <Sparkles size={14} />
         </div>
         <h1 className="mb-5 text-[40px] leading-[1.03] font-extrabold tracking-[-0.03em] sm:text-[52px] md:text-[62px]">
-          I craft
+          I design
           <br />
-          <span style={{ color: "var(--pink)" }}>digital experiences</span>
+          <span style={{ color: "var(--pink)" }}>digital worlds</span>
           <br />
           <span
             className="text-[48px] sm:text-[58px] md:text-[66px]"
@@ -56,7 +58,7 @@ export default function Hero() {
               color: "var(--ink)",
             }}
           >
-            that inspire.
+            that spark imagination.
           </span>
         </h1>
         <div
@@ -74,9 +76,24 @@ export default function Hero() {
           supported.
         </p>
         <div className="mb-10 flex flex-wrap gap-3.5">
+          <Link
+            href="/Olivia_Omeje_Resume.pdf"
+            download
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2.5 rounded-full border-[1.5px] px-6 py-3 text-[15px] font-semibold transition-all dark:hover:shadow-[0_0 _8px_#f472b6] hover:shadow-[0_0_8px_#f472b6]"
+            style={{
+              background: "var(--card)",
+              color: "var(--pinkDeep)",
+              borderColor: "var(--pink)",
+            }}
+          >
+            Download Resume 
+            <Download size={16} strokeWidth={2.2} />
+          </Link>
           <button
             onClick={() => nav("work")}
-            className="inline-flex items-center gap-2.5 rounded-full px-6 py-3.5 text-[15px] font-semibold text-white transition-transform hover:-translate-y-0.5"
+            className="inline-flex items-center gap-2.5 rounded-full px-6 py-3 text-[15px] font-semibold text-white transition-transform hover:-translate-y-0.5"
             style={{
               background: "var(--pink)",
               boxShadow: "0 12px 28px rgba(236,72,153,.34)",
@@ -84,17 +101,6 @@ export default function Hero() {
           >
             View My Work
             <ArrowRight size={16} strokeWidth={2.2} />
-          </button>
-          <button
-            onClick={() => nav("about")}
-            className="inline-flex items-center gap-2.5 rounded-full border-[1.5px] px-6 py-3.5 text-[15px] font-semibold transition-colors"
-            style={{
-              background: "var(--card)",
-              color: "var(--pinkDeep)",
-              borderColor: "var(--pink)",
-            }}
-          >
-            About me
           </button>
         </div>
         <div className="flex gap-3">

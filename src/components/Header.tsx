@@ -31,7 +31,7 @@ export default function Header() {
         borderColor: "var(--line)",
       }}
     >
-      <div className="mx-auto flex max-w-305 items-center gap-7 px-4 py-3.5 sm:px-8">
+      <div className="mx-auto flex max-w-305 items-center gap-7 px-4 py-2.5 sm:px-8">
         <button
           onClick={() => nav("home")}
           className="mr-auto flex items-center gap-2"
@@ -43,12 +43,12 @@ export default function Header() {
             width={140}
             height={48}
             sizes="140px"
-            className="h-12 w-auto object-contain"
+            className="h-9.5 w-auto object-contain"
             style={{
               width: "auto",
               background: "var(--logoChip)",
               padding: "var(--logoPad)",
-              borderRadius: 14,
+              borderRadius: 7,
             }}
             priority
           />
@@ -103,7 +103,7 @@ export default function Header() {
 
         <button
           onClick={() => nav("contact")}
-          className="hidden items-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold text-white transition-transform hover:-translate-y-0.5 sm:inline-flex"
+          className="hidden items-center gap-2 rounded-xl px-5 py-2 text-sm font-semibold text-white transition-all hover:-translate-y-0.5 sm:inline-flex hover:rounded-full transition-5s"
           style={{
             background: "var(--pink)",
             boxShadow: "0 10px 24px rgba(236,72,153,.35)",
