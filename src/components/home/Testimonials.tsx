@@ -25,7 +25,7 @@ export default function Testimonials() {
         <Heart size={15} fill="var(--pink)" style={{ color: "var(--pink)" }} />
       </div>
 
-      <div className="grid gap-5.5 md:grid-cols-3">
+      <div className="grid gap-5 md:grid-cols-3">
         {quotes.map((q) => (
           <div
             key={q.name}
