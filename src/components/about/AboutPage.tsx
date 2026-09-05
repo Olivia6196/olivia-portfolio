@@ -74,15 +74,25 @@ export default function AboutPage() {
               className="animate-divider mb-4.5 h-0.75 w-17.5 rounded-full"
               style={{ background: "var(--pink)" }}
             />
-            <p className="m-0 text-base leading-[1.75]" style={{ color: "var(--ink)" }}>
-              Hi, I&apos;m Olivia, a passionate Frontend Developer with a knack
-              for crafting beautiful and functional websites. I enjoy building
-              websites that are not only beautiful but also intuitive and
-              accessible to users across different devices. I thrive on
-              creativity and problem-solving, always eager to learn and grow in
-              the ever-evolving world of web development. When I&apos;m not
-              coding, you can find me exploring new technologies or indulging in
-              my love for design. Let&apos;s create something amazing together!
+            <p
+              className="m-0 text-base leading-[1.75]"
+              style={{ color: "var(--ink)" }}
+            >
+              Hi, I’m Olivia, a Full Stack Developer passionate about building
+              modern, scalable, and high-performing web applications that solve
+              real-world problems. I specialize in creating seamless digital
+              experiences by combining responsive, user-focused frontend
+              interfaces with robust and efficient backend systems. With a
+              strong focus on clean code, performance, accessibility, and
+              intuitive design, I enjoy turning ideas into reliable digital
+              products that deliver meaningful results. I’m constantly exploring
+              new technologies and refining my skills to stay ahead in the
+              ever-evolving world of web development. Whether it’s developing a
+              dynamic web application, designing an engaging user interface, or
+              building the backend infrastructure that powers it, I approach
+              every project with creativity, attention to detail, and a
+              problem-solving mindset. Let’s turn your ideas into powerful
+              digital experiences.
             </p>
           </div>
 
@@ -107,17 +117,19 @@ export default function AboutPage() {
               className="m-0 text-base leading-[1.75]"
               style={{ color: "var(--muted)" }}
             >
-              While my academic background is in science, my curiosity for how
-              websites are built and function led me to learn web development.
-              What started as a simple interest slowly became a passion. I
-              started learning HTML and CSS, which laid the foundation for my
-              understanding of web design and structure. As I delved deeper, I
-              discovered JavaScript, which opened up a world of interactivity
-              and dynamic content on the web. I then explored React, a powerful
-              JavaScript library for building user interfaces, which allowed me
-              to create more complex and responsive web applications. Along the
-              way, I have worked on various projects that have helped me hone my
-              skills and gain practical experience in frontend development.
+              My journey into web development started with a simple curiosity
+              about how websites work. Coming from a science background, I
+              became fascinated by the process of designing and building digital
+              products, and that curiosity gradually grew into a career in
+              web development. I started with HTML and CSS before moving
+              into JavaScript and React, where I developed a deeper
+              understanding of interactive and responsive interfaces. I later
+              expanded into backend development, working with APIs, databases,
+              authentication, and server-side technologies. Through hands-on
+              projects, I’ve gained practical experience building full-stack
+              applications while strengthening my problem-solving and
+              development skills. I continue to explore new technologies and
+              take on projects that challenge me to grow.
             </p>
           </div>
         </div>
