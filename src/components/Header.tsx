@@ -1,27 +1,27 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { AnimatePresence, motion } from "framer-motion";
 import { ArrowRight, Menu, Moon, Sun, X } from "lucide-react";
-import { usePortfolio } from "@/context/PortfolioContext";
-import type { PageId } from "@/data/portfolio";
+import { useTheme } from "@/context/ThemeContext";
 
-const NAV: { id: PageId; label: string }[] = [
-  { id: "home", label: "Home" },
-  { id: "about", label: "About" },
-  { id: "work", label: "Work" },
-  { id: "services", label: "Services" },
-];
+const NAV = [
+  { href: "/", label: "Home" },
+  { href: "/about", label: "About" },
+  { href: "/work", label: "Work" },
+  { href: "/services", label: "Services" },
+] as const;
+
+function isActivePath(pathname: string, href: string) {
+  if (href === "/") return pathname === "/";
+  return pathname === href || pathname.startsWith(`${href}/`);
+}
 
 export default function Header() {
-  const {
-    theme,
-    menuOpen,
-    nav,
-    toggleTheme,
-    setMenuOpen,
-    isActive,
-  } = usePortfolio();
+  const { theme, menuOpen, toggleTheme, setMenuOpen } = useTheme();
+  const pathname = usePathname();
 
   return (
     <header
@@ -32,14 +32,15 @@ export default function Header() {
       }}
     >
       <div className="mx-auto flex max-w-305 items-center gap-7 px-4 py-2.5 sm:px-8">
-        <button
-          onClick={() => nav("home")}
+        <Link
+          href="/"
           className="mr-auto flex items-center gap-2"
-          aria-label="Home"
+          aria-label="Olivia – Full Stack Developer home"
+          onClick={() => setMenuOpen(false)}
         >
           <Image
             src="/logo.png"
-            alt="Livia Codes"
+            alt="LiviaCodes – Olivia portfolio logo"
             width={140}
             height={48}
             sizes="140px"
@@ -52,24 +53,27 @@ export default function Header() {
             }}
             priority
           />
-        </button>
+        </Link>
 
         <nav className="hidden items-center gap-2 md:flex" aria-label="Main">
-          {NAV.map((item) => (
-            <button
-              key={item.id}
-              onClick={() => nav(item.id)}
-              aria-current={isActive(item.id) ? "page" : undefined}
-              className="rounded-full px-3.5 py-2 text-sm transition-colors"
-              style={{
-                color: isActive(item.id) ? "var(--pinkDeep)" : "var(--ink)",
-                fontWeight: isActive(item.id) ? 700 : 500,
-                background: isActive(item.id) ? "var(--pinkSoft)" : "transparent",
-              }}
-            >
-              {item.label}
-            </button>
-          ))}
+          {NAV.map((item) => {
+            const active = isActivePath(pathname, item.href);
+            return (
+              <Link
+                key={item.href}
+                href={item.href}
+                aria-current={active ? "page" : undefined}
+                className="rounded-full px-3.5 py-2 text-sm transition-colors"
+                style={{
+                  color: active ? "var(--pinkDeep)" : "var(--ink)",
+                  fontWeight: active ? 700 : 500,
+                  background: active ? "var(--pinkSoft)" : "transparent",
+                }}
+              >
+                {item.label}
+              </Link>
+            );
+          })}
         </nav>
 
         <button
@@ -96,14 +100,15 @@ export default function Header() {
             color: "var(--pinkDeep)",
           }}
           onClick={() => setMenuOpen((m) => !m)}
-          aria-label="Menu"
+          aria-label={menuOpen ? "Close menu" : "Open menu"}
+          aria-expanded={menuOpen}
         >
           {menuOpen ? <X size={18} /> : <Menu size={18} />}
         </button>
 
-        <button
-          onClick={() => nav("contact")}
-          className="hidden items-center gap-2 rounded-xl px-5 py-2 text-sm font-semibold text-white transition-all hover:-translate-y-0.5 sm:inline-flex hover:rounded-full transition-5s"
+        <Link
+          href="/contact"
+          className="hidden items-center gap-2 rounded-xl px-5 py-2 text-sm font-semibold text-white transition-all hover:-translate-y-0.5 sm:inline-flex hover:rounded-full"
           style={{
             background: "var(--pink)",
             boxShadow: "0 10px 24px rgba(236,72,153,.35)",
@@ -111,7 +116,7 @@ export default function Header() {
         >
           Let&apos;s talk
           <ArrowRight size={16} />
-        </button>
+        </Link>
       </div>
 
       <AnimatePresence>
@@ -124,28 +129,31 @@ export default function Header() {
             style={{ borderColor: "var(--line)", background: "var(--card)" }}
           >
             <div className="flex flex-col gap-1 px-4 py-3">
-              {NAV.map((item) => (
-                <button
-                  key={item.id}
-                  onClick={() => nav(item.id)}
-                  className="rounded-xl px-4 py-3 text-left text-sm font-medium"
-                  style={{
-                    color: isActive(item.id) ? "var(--pinkDeep)" : "var(--ink)",
-                    background: isActive(item.id)
-                      ? "var(--pinkSoft)"
-                      : "transparent",
-                  }}
-                >
-                  {item.label}
-                </button>
-              ))}
-              <button
-                onClick={() => nav("contact")}
+              {NAV.map((item) => {
+                const active = isActivePath(pathname, item.href);
+                return (
+                  <Link
+                    key={item.href}
+                    href={item.href}
+                    onClick={() => setMenuOpen(false)}
+                    className="rounded-xl px-4 py-3 text-left text-sm font-medium"
+                    style={{
+                      color: active ? "var(--pinkDeep)" : "var(--ink)",
+                      background: active ? "var(--pinkSoft)" : "transparent",
+                    }}
+                  >
+                    {item.label}
+                  </Link>
+                );
+              })}
+              <Link
+                href="/contact"
+                onClick={() => setMenuOpen(false)}
                 className="mt-1 rounded-full px-4 py-3 text-center text-sm font-semibold text-white"
                 style={{ background: "var(--pink)" }}
               >
                 Let&apos;s talk
-              </button>
+              </Link>
             </div>
           </motion.div>
         )}

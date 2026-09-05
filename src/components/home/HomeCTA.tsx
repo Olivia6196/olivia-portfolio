@@ -1,11 +1,9 @@
 "use client";
 
 import { ArrowUpRight, Mail, MapPin, User } from "lucide-react";
-import { usePortfolio } from "@/context/PortfolioContext";
+import Link from "next/link";
 
 export default function HomeCTA() {
-  const { nav } = usePortfolio();
-
   return (
     <section
       className="mt-8 rounded-[30px] px-8.5 py-10"
@@ -34,8 +32,8 @@ export default function HomeCTA() {
           >
             Few build slots open this quarter. Bring the hard problem.
           </p>
-          <button
-            onClick={() => nav("contact")}
+          <Link
+            href="/contact"
             className="inline-flex items-center gap-2.5 rounded-full px-6 py-3.5 text-[15px] font-semibold text-white"
             style={{
               background: "var(--pink)",
@@ -44,7 +42,7 @@ export default function HomeCTA() {
           >
             Let&apos;s Connect
             <ArrowUpRight size={16} strokeWidth={2.2} />
-          </button>
+          </Link>
         </div>
 
         <div className="flex flex-col gap-4">

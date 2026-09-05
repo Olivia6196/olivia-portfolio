@@ -1,12 +1,11 @@
 "use client";
 
+import Link from "next/link";
+import Image from "next/image";
 import { ArrowRight, Sparkles } from "lucide-react";
 import { PROJECTS } from "@/data/portfolio";
-import { usePortfolio } from "@/context/PortfolioContext";
-import Image from "next/image";
 
 export default function FeaturedWork() {
-  const { nav, openStudy } = usePortfolio();
   const featured = PROJECTS.slice(0, 3);
 
   return (
@@ -18,21 +17,21 @@ export default function FeaturedWork() {
           </h2>
           <Sparkles size={15} style={{ color: "var(--pink)" }} />
         </div>
-        <button
-          onClick={() => nav("work")}
+        <Link
+          href="/work"
           className="inline-flex items-center gap-2 text-sm font-semibold"
           style={{ color: "var(--pinkDeep)" }}
         >
           View all projects
           <ArrowRight size={15} strokeWidth={2.2} />
-        </button>
+        </Link>
       </div>
 
       <div className="grid gap-5.5 md:grid-cols-3">
-        {featured.map((p, i) => (
-          <button
-            key={p.name}
-            onClick={() => openStudy(i)}
+        {featured.map((p) => (
+          <Link
+            key={p.slug}
+            href={`/work/${p.slug}`}
             className="project-card group flex flex-col overflow-hidden rounded-[26px] text-left transition-transform hover:-translate-y-1.5"
             style={{ background: "var(--card)", boxShadow: "var(--shadow)" }}
           >
@@ -47,10 +46,11 @@ export default function FeaturedWork() {
                 <>
                   <Image
                     src={p.mark}
-                    alt={`${p.name} project preview`}
+                    alt={`${p.name} by Olivia – project preview`}
                     fill
                     sizes="(max-width: 768px) 100vw, 33vw"
                     className="object-cover transition-opacity duration-500"
+                    loading="lazy"
                   />
                   {p.hoverMark && (
                     <Image
@@ -59,6 +59,7 @@ export default function FeaturedWork() {
                       fill
                       sizes="(max-width: 768px) 100vw, 33vw"
                       className="project-image-secondary z-10 object-cover opacity-0 transition-opacity duration-500"
+                      loading="lazy"
                     />
                   )}
                 </>
@@ -94,7 +95,7 @@ export default function FeaturedWork() {
                 <ArrowRight size={16} strokeWidth={2.2} />
               </span>
             </div>
-          </button>
+          </Link>
         ))}
       </div>
     </section>

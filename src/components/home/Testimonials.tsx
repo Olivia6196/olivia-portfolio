@@ -1,11 +1,11 @@
 "use client";
 
 import { ChevronLeft, ChevronRight, Heart } from "lucide-react";
+import { useState } from "react";
 import { QUOTES } from "@/data/portfolio";
-import { usePortfolio } from "@/context/PortfolioContext";
 
 export default function Testimonials() {
-  const { quoteIdx, setQuoteIdx } = usePortfolio();
+  const [quoteIdx, setQuoteIdx] = useState(0);
   const quotesPerPage = 3;
   const pageCount = Math.ceil(QUOTES.length / quotesPerPage);
   const quotes = QUOTES.slice(

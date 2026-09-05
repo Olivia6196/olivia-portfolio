@@ -1,14 +1,24 @@
 import type { MetadataRoute } from "next";
-
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://omejeolivia.dev";
+import { PROJECTS, SITE } from "@/data/portfolio";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  return [
-    {
-      url: siteUrl,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 1,
-    },
+  const base = SITE.url;
+  const now = new Date();
+
+  const staticPages: MetadataRoute.Sitemap = [
+    { url: base, lastModified: now, changeFrequency: "monthly", priority: 1 },
+    { url: `${base}/about`, lastModified: now, changeFrequency: "monthly", priority: 0.9 },
+    { url: `${base}/work`, lastModified: now, changeFrequency: "weekly", priority: 0.9 },
+    { url: `${base}/services`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
+    { url: `${base}/contact`, lastModified: now, changeFrequency: "yearly", priority: 0.7 },
   ];
+
+  const projectPages: MetadataRoute.Sitemap = PROJECTS.map((p) => ({
+    url: `${base}/work/${p.slug}`,
+    lastModified: now,
+    changeFrequency: "monthly" as const,
+    priority: 0.75,
+  }));
+
+  return [...staticPages, ...projectPages];
 }

@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { Heart, Layers, LayoutGrid, Monitor, Server } from "lucide-react";
-import { usePortfolio } from "@/context/PortfolioContext";
+import Link from "next/link";
 
 const TILES = [
   {
@@ -28,8 +28,6 @@ const TILES = [
 ];
 
 export default function AboutPreview() {
-  const { nav } = usePortfolio();
-
   return (
     <section
       className="mt-6 rounded-[30px] p-8.5"
@@ -42,11 +40,11 @@ export default function AboutPreview() {
         >
           <Image
             src="/olivia.jpg"
-            alt="Olivia at work"
+            alt="Olivia, full stack developer, at work"
             width={300}
             height={400}
             sizes="(max-width: 768px) 100vw, 300px"
-            loading="lazy"
+            loading="eager"
             className="aspect-3/4 w-full object-cover object-[50%_18%]"
           />
         </figure>
@@ -92,8 +90,8 @@ export default function AboutPreview() {
           >
             I combine technical depth with design sense to build websites that are technically solid and genuinely pleasant to use.
           </p>
-          <button
-            onClick={() => nav("about")}
+          <Link
+            href="/about"
             className="inline-flex items-center gap-2 rounded-full px-5.5 py-3 text-sm font-semibold text-white"
             style={{
               background: "var(--pink)",
@@ -101,7 +99,7 @@ export default function AboutPreview() {
             }}
           >
             Know More About Me
-          </button>
+          </Link>
         </div>
 
         <div

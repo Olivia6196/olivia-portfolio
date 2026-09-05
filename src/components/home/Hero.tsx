@@ -11,7 +11,6 @@ import {
   Sparkles,
   Download,
 } from "lucide-react";
-import { usePortfolio } from "@/context/PortfolioContext";
 import Link from "next/link";
 
 const socials = [
@@ -33,8 +32,6 @@ const socials = [
   ]
 
 export default function Hero() {
-  const { nav } = usePortfolio();
-
   return (
     <section className="grid items-center gap-10 py-14 md:grid-cols-[1.02fr_0.98fr] md:gap-10">
       <div>
@@ -91,8 +88,8 @@ export default function Hero() {
             Download Resume 
             <Download size={16} strokeWidth={2.2} />
           </Link>
-          <button
-            onClick={() => nav("work")}
+          <Link
+            href="/work"
             className="inline-flex items-center gap-2.5 rounded-full px-6 py-3 text-[15px] font-semibold text-white transition-transform hover:-translate-y-0.5"
             style={{
               background: "var(--pink)",
@@ -101,7 +98,7 @@ export default function Hero() {
           >
             View My Work
             <ArrowRight size={16} strokeWidth={2.2} />
-          </button>
+          </Link>
         </div>
         <div className="flex gap-3">
            {socials.map(({ icon: Icon, link, style }) => {
@@ -109,7 +106,7 @@ export default function Hero() {
             <a
               key={link}
               href={link}
-              aria-label={link}
+              aria-label={link.includes("linkedin") ? "Olivia on LinkedIn" : link.includes("github") ? "Olivia on GitHub" : link.includes("instagram") ? "Olivia on Instagram" : "Olivia on Facebook"}
               target="_blank"
               rel="noopener noreferrer"
               className={style}
@@ -138,7 +135,7 @@ export default function Hero() {
         >
           <Image
             src="/olivia.jpg"
-            alt="Omeje Olivia"
+            alt="Omeje Olivia – Full Stack Developer (LiviaCodes)"
             width={560}
             height={700}
             sizes="(max-width: 768px) 100vw, 560px"

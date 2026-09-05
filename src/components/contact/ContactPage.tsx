@@ -275,7 +275,7 @@ export default function ContactPage() {
                   <a
                     key={link}
                     href={link}
-                    aria-label={link}
+                    aria-label={link.includes("linkedin") ? "Olivia on LinkedIn" : link.includes("github") ? "Olivia on GitHub" : link.includes("instagram") ? "Olivia on Instagram" : "Olivia on Facebook"}
                     target="_blank"
                     rel="noopener noreferrer"
                     className={style}

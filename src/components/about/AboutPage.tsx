@@ -43,7 +43,7 @@ export default function AboutPage() {
           />
           <Image
             src="/olivia-about.png"
-            alt="Omeje Olivia"
+            alt="Omeje Olivia – Full Stack Developer portrait"
             width={380}
             height={480}
             sizes="(max-width: 768px) 86vw, 380px"

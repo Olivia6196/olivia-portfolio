@@ -1,10 +1,8 @@
 "use client";
 
-import { usePortfolio } from "@/context/PortfolioContext";
+import Link from "next/link";
 
 export default function Footer() {
-  const { nav } = usePortfolio();
-
   return (
     <footer
       className="border-t"
@@ -18,15 +16,22 @@ export default function Footer() {
         style={{ color: "var(--muted)" }}
       >
         <span className="mr-auto">
-          © 2026 Omeje Olivia. All rights reserved.
+          © {new Date().getFullYear()} Omeje Olivia (LiviaCodes). All rights
+          reserved.
         </span>
-        <button onClick={() => nav("work")} className="hidden md:inline-block hover:opacity-80">
+        <Link href="/work" className="hidden md:inline-block hover:opacity-80">
           Work
-        </button>
-        <button onClick={() => nav("services")} className="hidden md:inline-block hover:opacity-80">
+        </Link>
+        <Link
+          href="/services"
+          className="hidden md:inline-block hover:opacity-80"
+        >
           Services
-        </button>
-        <a href="mailto:oliviaifebuche002@gmail.com" className="hidden md:inline-block hover:opacity-80">
+        </Link>
+        <a
+          href="mailto:oliviaifebuche002@gmail.com"
+          className="hidden md:inline-block hover:opacity-80"
+        >
           Email
         </a>
       </div>
