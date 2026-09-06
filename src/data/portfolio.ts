@@ -83,7 +83,7 @@ export const PROJECTS: Project[] = [
     kind: "Web App",
     year: "2026",
     blurb: "A modern website for a cleaning company, showcasing their services and expertise.",
-    link: "/work/cleaning-company-website",
+    link: "https://pure-shine-three.vercel.app/",
     facts: [
       { label: "Role", value: "Developer" },
       { label: "Stack", value: "Next.js" },
