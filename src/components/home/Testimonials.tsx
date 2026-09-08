@@ -3,6 +3,7 @@
 import { ChevronLeft, ChevronRight, Heart } from "lucide-react";
 import { useState } from "react";
 import { QUOTES } from "@/data/portfolio";
+import Image from "next/image";
 
 export default function Testimonials() {
   const [quoteIdx, setQuoteIdx] = useState(0);
@@ -19,7 +20,7 @@ export default function Testimonials() {
   return (
     <section className="pt-14">
       <div className="mb-5.5 flex items-center gap-2.5">
-        <h2 className="m-0 text-[15px] font-extrabold tracking-[0.16em] uppercase">
+        <h2 className="m-0 text-[16px] font-extrabold tracking-[0.16em] uppercase">
           Kind words
         </h2>
         <Heart size={15} fill="var(--pink)" style={{ color: "var(--pink)" }} />
@@ -33,7 +34,7 @@ export default function Testimonials() {
             style={{ background: "var(--card)", boxShadow: "var(--shadow)" }}
           >
             <span
-              className="inline-flex h-11 w-11 items-center justify-center rounded-full text-[32px] leading-none font-bold text-white"
+              className="inline-flex h-9 w-9 items-center justify-center rounded-full text-[32px] leading-none font-bold text-white"
               style={{
                 background: "var(--pink)",
                 fontFamily: "var(--font-caveat), Caveat, cursive",
@@ -51,15 +52,13 @@ export default function Testimonials() {
               className="flex items-center gap-3 border-t pt-3.5"
               style={{ borderColor: "var(--line)" }}
             >
-              <span
-                className="inline-flex h-9.5 w-9.5 items-center justify-center rounded-full text-sm font-extrabold"
-                style={{
-                  background: "var(--pinkSoft)",
-                  color: "var(--pinkDeep)",
-                }}
-              >
-                {q.initials}
-              </span>
+              <Image 
+                src={q.initials}
+                alt={q.name}
+                width={40}
+                height={40}
+                className="h-9 w-9 rounded-full"
+              />
               <div>
                 <div className="text-sm font-bold">{q.name}</div>
                 <div className="text-xs" style={{ color: "var(--muted)" }}>
