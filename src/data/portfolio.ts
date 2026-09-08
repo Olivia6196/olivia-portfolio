@@ -141,7 +141,7 @@ export const QUOTES = [
   {
     initials: "/rev3.jpg",
     text: "CCSSSP went from a messy spreadsheet nightmare to a system our field officers actually enjoy using. That is rare.",
-    name: "Kemi Olatunji",
+    name: "Bella Stephens",
     role: "Programme Lead, CCSSSP",
   },
   {
