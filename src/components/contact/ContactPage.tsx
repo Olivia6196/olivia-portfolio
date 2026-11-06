@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useTransition } from "react";
 import {
   ArrowRight,
   Facebook,
@@ -11,6 +11,7 @@ import {
   MapPin,
   User,
 } from "lucide-react";
+import { sendContactEmail } from "@/app/actions/send-email";
 
 type FormState = {
   name: string;
@@ -30,7 +31,6 @@ const socials = [
     style:
       " text-white text-4xl bg-[#171515] py-1 px-2 rounded-xl border border-white mr-1",
   },
-
   {
     icon: Instagram,
     link: "https://www.instagram.com/olivia_codes",
@@ -64,6 +64,8 @@ export default function ContactPage() {
   });
   const [err, setErr] = useState<Record<string, string>>({});
   const [sent, setSent] = useState(false);
+  const [isPending, startTransition] = useTransition();
+  const [serverError, setServerError] = useState<string | null>(null);
 
   const setField =
     (k: keyof FormState) =>
@@ -77,7 +79,19 @@ export default function ContactPage() {
     e.preventDefault();
     const errs = validate(form);
     setErr(errs);
-    setSent(Object.keys(errs).length === 0);
+    setServerError(null);
+
+    if (Object.keys(errs).length > 0) return;
+
+    startTransition(async () => {
+      const result = await sendContactEmail(form);
+      if (result.success) {
+        setSent(true);
+        setForm({ name: "", email: "", message: "" }); // clear form after success
+      } else {
+        setServerError(result.error || "Something went wrong. Please try again.");
+      }
+    });
   };
 
   return (
@@ -204,21 +218,32 @@ export default function ContactPage() {
           <div className="flex flex-wrap items-center gap-4">
             <button
               type="submit"
-              className="inline-flex cursor-pointer items-center gap-2 rounded-full border-0 px-6 py-3.5 text-[15px] font-semibold text-white"
+              disabled={isPending}
+              className="inline-flex cursor-pointer items-center gap-2 rounded-full border-0 px-6 py-3.5 text-[15px] font-semibold text-white disabled:opacity-60"
               style={{
                 background: "var(--pink)",
                 boxShadow: "0 12px 28px rgba(236,72,153,.34)",
               }}
             >
-              Send it
-              <ArrowRight size={16} strokeWidth={2.2} />
+              {isPending ? "Sending..." : "Send it"}
+              {!isPending && <ArrowRight size={16} strokeWidth={2.2} />}
             </button>
+
             {sent && (
               <span
                 className="text-[13px] font-semibold"
                 style={{ color: "var(--pinkDeep)" }}
               >
                 Sent. I reply within two working days.
+              </span>
+            )}
+
+            {serverError && (
+              <span
+                className="text-[13px] font-semibold"
+                style={{ color: "var(--pinkDeep)" }}
+              >
+                {serverError}
               </span>
             )}
           </div>
@@ -230,7 +255,7 @@ export default function ContactPage() {
         >
           {[
             { Icon: Mail, label: "Email", value: "oliviaifebuche002@gmail.com" },
-            { Icon: MapPin, label: "Based in", value: "Enugu / Remote" },
+            { Icon: MapPin, label: "Based in", value: "Abuja / Remote" },
             {
               Icon: User,
               label: "Available for",
@@ -275,7 +300,15 @@ export default function ContactPage() {
                   <a
                     key={link}
                     href={link}
-                    aria-label={link.includes("linkedin") ? "Olivia on LinkedIn" : link.includes("github") ? "Olivia on GitHub" : link.includes("instagram") ? "Olivia on Instagram" : "Olivia on Facebook"}
+                    aria-label={
+                      link.includes("linkedin")
+                        ? "Olivia on LinkedIn"
+                        : link.includes("github")
+                          ? "Olivia on GitHub"
+                          : link.includes("instagram")
+                            ? "Olivia on Instagram"
+                            : "Olivia on Facebook"
+                    }
                     target="_blank"
                     rel="noopener noreferrer"
                     className={style}
