@@ -50,9 +50,9 @@ export default function HomeCTA() {
             {
               Icon: Mail,
               label: "Email",
-              value: "oliviaifebuche002@gmail.com",
+              value: "ifebuchechukwuomeje@gmail.com",
             },
-            { Icon: MapPin, label: "Based in", value: "Enugu / Remote" },
+            { Icon: MapPin, label: "Based in", value: "Abuja / Remote" },
             {
               Icon: User,
               label: "Available for",

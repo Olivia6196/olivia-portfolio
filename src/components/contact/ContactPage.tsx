@@ -191,7 +191,7 @@ export default function ContactPage() {
               className="mb-1.5 block text-xs font-bold tracking-widest uppercase"
               style={{ color: "var(--muted)" }}
             >
-              Project
+              Message
             </label>
             <textarea
               id="cf-msg"
@@ -254,7 +254,7 @@ export default function ContactPage() {
           style={{ background: "var(--card)", boxShadow: "var(--shadow)" }}
         >
           {[
-            { Icon: Mail, label: "Email", value: "oliviaifebuche002@gmail.com" },
+            { Icon: Mail, label: "Email", value: "ifebuchechukwuomeje@gmail.com" },
             { Icon: MapPin, label: "Based in", value: "Abuja / Remote" },
             {
               Icon: User,
