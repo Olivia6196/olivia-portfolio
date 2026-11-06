@@ -37,6 +37,7 @@ export const metadata: Metadata = {
     "Omeje Olivia Ifebuchechukwu",
     "Next.js developer",
     "React developer",
+    "Web developer"
   ],
   authors: [{ name: "Omeje Olivia", url: SITE.url }],
   creator: "Omeje Olivia",
