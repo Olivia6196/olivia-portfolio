@@ -25,7 +25,7 @@ const iconMap = {
 
 export default function ServicesPage() {
   return (
-    <main className="mx-auto max-w-[1220px] px-4 py-12 sm:px-8">
+    <main className="mx-auto max-w-305 px-4 py-12 sm:px-8">
       <div className="mb-7">
         <div
           className="mb-3 text-xs font-bold tracking-[0.18em] uppercase"
@@ -47,17 +47,17 @@ export default function ServicesPage() {
         </h1>
       </div>
 
-      <div className="grid gap-[22px] md:grid-cols-2">
+      <div className="grid gap-5.5 md:grid-cols-2">
         {SERVICES.map((s) => {
           const Icon = iconMap[s.icon as keyof typeof iconMap] || Layers;
           return (
             <div
               key={s.title}
-              className="flex gap-[18px] rounded-[26px] p-[26px]"
-              style={{ background: "var(--card)", boxShadow: "var(--shadow)" }}
+              className="flex gap-5.5 rounded-[26px] p-6.5 shadow-(---shadow) transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_0_18px_rgba(236,72,153,.95)]"
+              style={{ background: "var(--card)" }}
             >
               <span
-                className="inline-flex h-[46px] w-[46px] shrink-0 items-center justify-center rounded-2xl"
+                className="inline-flex h-11.5 w-11.5 shrink-0 items-center justify-center rounded-2xl"
                 style={{
                   background: "var(--pinkSoft)",
                   color: "var(--pinkDeep)",
