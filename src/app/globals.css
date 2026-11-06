@@ -15,6 +15,7 @@ body {
   --card: #ffffff;
   --card2: #fdeef7;
   --ink: #3d2531;
+  --skill-text: #000000;
   --muted: #8b6e7c;
   --pink: #ec4899;
   --pinkDeep: #db2777;
@@ -33,6 +34,7 @@ body {
   --card: #241629;
   --card2: #2c1a31;
   --ink: #fbe9f4;
+  --skill-text: #ffffff;
   --muted: #fcf5f9;
   --pink: #f472b6;
   --pinkDeep: #f9a8d4;

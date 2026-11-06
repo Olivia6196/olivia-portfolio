@@ -101,11 +101,11 @@ export default function Skills() {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-24">
         {technicalSkills.map((skill, index) => (
           <div key={skill.name}>
-            <div className="flex justify-between mb-1">
-              <span className="dark:text-white text-black font-medium">
+            <div className=" flex justify-between mb-1">
+              <span className="font-medium" style={{ color: "var(--skill-text)" }}>
                 {skill.name}
               </span>
-              <span className="dark:text-white text-black font-medium">
+              <span className="font-medium" style={{ color: "var(--skill-text)" }}>
                 {techCounters[index]}%
               </span>
             </div>
@@ -163,11 +163,19 @@ export default function Skills() {
                 />
               </svg>
               {/* Animated number */}
-              <span className="absolute inset-0 flex items-center justify-center text-lg font-semibold text-black dark:text-white">
+              <span
+                className="absolute inset-0 flex items-center justify-center text-lg font-semibold"
+                style={{ color: "var(--skill-text)" }}
+              >
                 {proCounters[index]}%
               </span>
             </div>
-            <p className="text-center mt-2 text-sm font-medium">{skill.name}</p>
+            <p
+              className="text-center mt-2 text-sm font-medium"
+              style={{ color: "var(--skill-text)" }}
+            >
+              {skill.name}
+            </p>
           </div>
         ))}
       </div>
